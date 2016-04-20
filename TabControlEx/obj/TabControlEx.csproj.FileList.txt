@@ -1,5 +1,0 @@
-bin\Debug\TabControlEx.dll
-bin\Debug\TabControlEx.pdb
-obj\Debug\ResolveAssemblyReference.cache
-obj\Debug\TabControlEx.dll
-obj\Debug\TabControlEx.pdb
