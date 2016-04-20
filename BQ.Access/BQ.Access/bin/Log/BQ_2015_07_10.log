@@ -1,8 +1,0 @@
-2015-07-10 11:19:57 057 Error : 类名称：BQ.DBAccess 方法名称：ExecuteSql(string strSQL) 消息：INSERT INTO 语句的语法错误。insert into TableTest(DateTime,NameT) values('2015-7-10 11:19:00','YY')
-------------------------------------------------------------------------------
-2015-07-10 11:25:16 264 Error : 类名称：BQ.DBAccess 方法名称：ExecuteSql(string strSQL) 消息：INSERT INTO 语句的语法错误。insert into TableTest(ID,DateTime,NameT) values('2','2015-7-10 11:19:00','YY')
-------------------------------------------------------------------------------
-2015-07-10 11:25:41 547 Error : 类名称：BQ.DBAccess 方法名称：ExecuteSql(string strSQL) 消息：INSERT INTO 语句的语法错误。insert into TableTest(ID,DateTime,NameT) values ('2','2015-7-10','YY')
-------------------------------------------------------------------------------
-2015-07-10 11:25:43 718 Error : 类名称：BQ.DBAccess 方法名称：ExecuteSql(string strSQL) 消息：INSERT INTO 语句的语法错误。insert into TableTest(ID,DateTime,NameT) values ('2','2015-7-10','YY')
-------------------------------------------------------------------------------
