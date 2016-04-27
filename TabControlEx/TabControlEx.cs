@@ -745,12 +745,10 @@ namespace CSharpWin
               // MessageBox.Show("在close按钮范围里面");
                 //--假如在close按钮里面，就关闭
                // this.TabPages.RemoveAt(cSelectedIndex );
-                this.TabPages.Remove(this.TabPages[cSelectedIndex]);
+                TabPage page = TabPages[cSelectedIndex];
+                TabPages.Remove(page);
+                page.Dispose();
             }
-
-            
-            
-
         }
 
         internal void RenderTabBackgroundInternal(
