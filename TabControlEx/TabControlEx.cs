@@ -22,7 +22,7 @@ namespace CSharpWin
         private const string UpDownButtonClassName = "msctls_updown32";
         private static readonly int Radius = 8;
         private static readonly object EventPaintUpDownButton = new object();
-        
+
 
         #endregion
 
@@ -32,8 +32,8 @@ namespace CSharpWin
             : base()
         {
             SetStyles();
-          this.MouseClick += new MouseEventHandler(init_click_handler);
-            IsCloseShow = true;
+            NoClosePageName = string.Empty;
+            this.MouseClick += new MouseEventHandler(init_click_handler);
             //this.Click += new EventHandler(init_click_handler);
         }
 
@@ -104,7 +104,7 @@ namespace CSharpWin
             get { return FindUpDownButton(); }
         }
 
-        public bool IsCloseShow
+        public string NoClosePageName
         {
             set;
             get;
@@ -364,7 +364,7 @@ namespace CSharpWin
                 g.FillRectangle(brush, ClientRectangle);
                 g.FillRectangle(brush, headerRect);
             }
-           
+
         }
         /// <summary>
         /// 这个是描绘tab page的方法，我尝试一下描绘其他东西
@@ -373,7 +373,7 @@ namespace CSharpWin
         private void DrawTabPages(Graphics g)
         {
             Rectangle tabRect;
-       
+
             Point cusorPoint = PointToClient(MousePosition);
             bool hover;
             bool selected;
@@ -400,7 +400,7 @@ namespace CSharpWin
                             upDownRect.Y = 0;
                             break;
                         case TabAlignment.Bottom:
-                            upDownRect.Y =ClientRectangle.Height - DisplayRectangle.Height;
+                            upDownRect.Y = ClientRectangle.Height - DisplayRectangle.Height;
                             break;
                     }
                     upDownRect.Height = ClientRectangle.Height;
@@ -409,7 +409,7 @@ namespace CSharpWin
                 }
             }
 
-            for(int index = 0; index <base.TabCount; index ++)
+            for (int index = 0; index < base.TabCount; index++)
             {
                 TabPage page = TabPages[index];
 
@@ -455,7 +455,7 @@ namespace CSharpWin
                     if (image != null)
                     {
                         hasImage = true;
-                    
+
                         g.DrawImage(
                             image,
                             new Rectangle(
@@ -472,7 +472,7 @@ namespace CSharpWin
                 }
 
                 Rectangle textRect = tabRect;
-                textRect.Width = tabRect.Width  - 16;
+                textRect.Width = tabRect.Width - 16;
                 textRect.X = tabRect.X + 4;
 
                 if (hasImage)
@@ -482,8 +482,9 @@ namespace CSharpWin
                 }
                 /*
                  绘制关闭图标
+                 标签为NoClosePageName的不绘制关闭按钮
                  */
-                if (IsCloseShow)
+                if (page.Name != NoClosePageName)
                 {
                     Bitmap oImage = CSharpWin.Properties.Resources.window_close;
                     Bitmap OImageSelected = CSharpWin.Properties.Resources.close_btn_gray;
@@ -512,18 +513,18 @@ namespace CSharpWin
                     textRect,
                     page.ForeColor);
 
-            
-            
 
 
-                
+
+
+
             }
             if (hasSetClip)
             {
                 g.ResetClip();
             }
         }
-        
+
 
         private void DrawBorder(Graphics g)
         {
@@ -732,22 +733,30 @@ namespace CSharpWin
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="agrs"></param>
-        private void init_click_handler(Object sender,MouseEventArgs agrs){
-           
+        private void init_click_handler(Object sender, MouseEventArgs agrs)
+        {
+
             TabControl t1 = (TabControl)sender;
             int cSelectedIndex = t1.SelectedIndex;
-           // MessageBox.Show("您点击了我,鼠标位置:" + agrs.X + "  " + agrs.Y + " 当前选中的tab为：" +cSelectedIndex);
-            Rectangle rect1=  t1.GetTabRect(t1.SelectedIndex);
-          //  MessageBox.Show("当前选中的矩形信息为：left "+rect1.Left+"，top "+rect1.Top+"，width "+rect1.Width+"，height "+rect1.Height+"");
+            // MessageBox.Show("您点击了我,鼠标位置:" + agrs.X + "  " + agrs.Y + " 当前选中的tab为：" +cSelectedIndex);
+            Rectangle rect1 = t1.GetTabRect(t1.SelectedIndex);
+            //  MessageBox.Show("当前选中的矩形信息为：left "+rect1.Left+"，top "+rect1.Top+"，width "+rect1.Width+"，height "+rect1.Height+"");
 
             Rectangle closeRect = new Rectangle(rect1.X + rect1.Width - 12 - 9, rect1.Y + rect1.Height - 12 - 6, 16, 16);
-            if (closeRect.Contains(new Point(agrs.X, agrs.Y))) {
-              // MessageBox.Show("在close按钮范围里面");
+            if (closeRect.Contains(new Point(agrs.X, agrs.Y)))
+            {
+                // MessageBox.Show("在close按钮范围里面");
                 //--假如在close按钮里面，就关闭
-               // this.TabPages.RemoveAt(cSelectedIndex );
+                // this.TabPages.RemoveAt(cSelectedIndex );
+                //标签名为NoClosePageName的不关闭
                 TabPage page = TabPages[cSelectedIndex];
-                TabPages.Remove(page);
-                page.Dispose();
+                if (page.Name != NoClosePageName)
+                {
+                    if (cSelectedIndex > 0)
+                        SelectedIndex = cSelectedIndex - 1;
+                    TabPages.Remove(page);
+                    page.Dispose();
+                }
             }
         }
 
@@ -973,7 +982,7 @@ namespace CSharpWin
                     case NativeMethods.WM_PAINT:
                         if (!_bPainting)
                         {
-                            NativeMethods.PAINTSTRUCT ps = 
+                            NativeMethods.PAINTSTRUCT ps =
                                 new NativeMethods.PAINTSTRUCT();
                             _bPainting = true;
                             NativeMethods.BeginPaint(m.HWnd, ref ps);
