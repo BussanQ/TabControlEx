@@ -486,8 +486,8 @@ namespace CSharpWin
                  */
                 if (page.Name != NoClosePageName)
                 {
-                    Bitmap oImage = CSharpWin.Properties.Resources.window_close;
-                    Bitmap OImageSelected = CSharpWin.Properties.Resources.close_btn_gray;
+                    Bitmap oImage = CSharpWin.Properties.Resources.close;
+                    Bitmap OImageSelected = CSharpWin.Properties.Resources.clear;
                     // g.DrawImage(oImage,new PointF(textRect.X+20,textRect.Height-20));
                     Rectangle closeRect = new Rectangle(tabRect.X + tabRect.Width - 12 - 7,
                         tabRect.Y + tabRect.Height - 12 - 6, 16, 16);

@@ -121,7 +121,6 @@
             this.tabControlEx2.Controls.Add(this.tabPage16);
             this.tabControlEx2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlEx2.ImageList = this.imageList1;
-            this.tabControlEx2.IsCloseShow = false;
             this.tabControlEx2.Location = new System.Drawing.Point(2, 2);
             this.tabControlEx2.Name = "tabControlEx2";
             this.tabControlEx2.SelectedIndex = 0;
@@ -229,7 +228,6 @@
             this.tabControlEx1.Controls.Add(this.tabPage8);
             this.tabControlEx1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlEx1.ImageList = this.imageList1;
-            this.tabControlEx1.IsCloseShow = true;
             this.tabControlEx1.Location = new System.Drawing.Point(2, 2);
             this.tabControlEx1.Name = "tabControlEx1";
             this.tabControlEx1.SelectedIndex = 0;

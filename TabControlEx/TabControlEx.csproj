@@ -36,7 +36,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\TabControlExDemo\bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -93,6 +93,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\close_btn.png" />
   </ItemGroup>
@@ -106,6 +107,9 @@
     <EmbeddedResource Include="Resources\dialog-close-selected-16.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\clear.png" />
+    <Content Include="Resources\close.png" />
+    <Content Include="Resources\close_ov.png" />
     <Content Include="Resources\cross.png" />
     <Content Include="Resources\window_close.png" />
     <Content Include="Resources\win_cancel.png" />

@@ -18,7 +18,6 @@ namespace TabControlExDemo
 
         private void button1_Click(object sender, EventArgs e)
         {
-            tabControlEx2.IsCloseShow = true;
             tabControlEx2.TabPages.Add("1");
         }
     }
