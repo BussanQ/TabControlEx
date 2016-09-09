@@ -109,8 +109,11 @@
   <ItemGroup>
     <Content Include="Resources\clear.png" />
     <Content Include="Resources\close.png" />
+    <None Include="Resources\close12.png" />
+    <None Include="Resources\closeov12.png" />
     <Content Include="Resources\close_ov.png" />
     <Content Include="Resources\cross.png" />
+    <None Include="Resources\test1.png" />
     <Content Include="Resources\window_close.png" />
     <Content Include="Resources\win_cancel.png" />
   </ItemGroup>
